@@ -14,7 +14,7 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: '<h1>Skeleton Project</h1>'
+        template: '<h1>BUGGED OUT</h1>'
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);
