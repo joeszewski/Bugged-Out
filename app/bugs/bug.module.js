@@ -8,13 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// Modules
 const core_1 = require('@angular/core');
+const shared_module_1 = require('../shared/shared.module');
+//Component
+const bug_list_component_1 = require('./bug-list/bug-list.component');
 let BugModule = class BugModule {
 };
 BugModule = __decorate([
     core_1.NgModule({
-        imports: [],
-        declarations: [],
+        imports: [
+            shared_module_1.SharedModule
+        ],
+        declarations: [
+            bug_list_component_1.BugListComponent
+        ],
         exports: [],
         providers: []
     }), 

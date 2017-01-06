@@ -8,25 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Module
 const core_1 = require('@angular/core');
-const platform_browser_1 = require('@angular/platform-browser');
-const bug_module_1 = require('./bugs/bug.module');
-const app_routing_module_1 = require('./app-routing.module');
-const app_component_1 = require('./app.component');
-let AppModule = class AppModule {
+let BugListComponent = class BugListComponent {
 };
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            bug_module_1.BugModule,
-            app_routing_module_1.AppRoutingModule
-        ],
-        declarations: [app_component_1.AppComponent],
-        bootstrap: [app_component_1.AppComponent]
+BugListComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'bug-list',
+        templateUrl: 'bug-list.component.html',
+        styleUrls: ['bug-list.component.css']
     }), 
     __metadata('design:paramtypes', [])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], BugListComponent);
+exports.BugListComponent = BugListComponent;
+//# sourceMappingURL=bug-list.component.js.map
