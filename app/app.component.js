@@ -16,7 +16,9 @@ AppComponent = __decorate([
         selector: 'my-app',
         template: `
     <navbar></navbar>
-    <router-outlet></router-outlet>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
     `
     }), 
     __metadata('design:paramtypes', [])
