@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Modules
 const core_1 = require('@angular/core');
 const shared_module_1 = require('../shared/shared.module');
+const bug_routing_module_1 = require('./bug-routing.module');
 //Component
 const bug_list_component_1 = require('./bug-list/bug-list.component');
 let BugModule = class BugModule {
@@ -18,7 +19,8 @@ let BugModule = class BugModule {
 BugModule = __decorate([
     core_1.NgModule({
         imports: [
-            shared_module_1.SharedModule
+            shared_module_1.SharedModule,
+            bug_routing_module_1.BugRoutingModule
         ],
         declarations: [
             bug_list_component_1.BugListComponent
