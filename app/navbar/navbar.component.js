@@ -8,30 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Module
 const core_1 = require('@angular/core');
-const platform_browser_1 = require('@angular/platform-browser');
-const bug_module_1 = require('./bugs/bug.module');
-const app_routing_module_1 = require('./app-routing.module');
-// Component
-const app_component_1 = require('./app.component');
-const navbar_component_1 = require('./navbar/navbar.component');
-let AppModule = class AppModule {
+let NavbarComponent = class NavbarComponent {
 };
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            bug_module_1.BugModule,
-            app_routing_module_1.AppRoutingModule
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            navbar_component_1.NavbarComponent
-        ],
-        bootstrap: [app_component_1.AppComponent]
+NavbarComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'navbar',
+        templateUrl: 'navbar.component.html',
+        styleUrls: ['navbar.component.css']
     }), 
     __metadata('design:paramtypes', [])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], NavbarComponent);
+exports.NavbarComponent = NavbarComponent;
+//# sourceMappingURL=navbar.component.js.map
