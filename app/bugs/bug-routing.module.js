@@ -18,7 +18,8 @@ BugRoutingModule = __decorate([
         imports: [
             router_1.RouterModule.forChild([
                 { path: '', redirectTo: 'bugs', pathMatch: 'full' },
-                { path: 'bugs', component: bug_list_component_1.BugListComponent }
+                { path: 'bugs', component: bug_list_component_1.BugListComponent },
+                { path: '**', redirectTo: 'bugs' }
             ])
         ],
         exports: [router_1.RouterModule]
