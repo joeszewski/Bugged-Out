@@ -20,8 +20,8 @@ let BugDetailComponent = class BugDetailComponent {
     configureForm() {
         this.bugForm = new forms_1.FormGroup({
             title: new forms_1.FormControl(),
-            status: new forms_1.FormControl(),
-            severity: new forms_1.FormControl(),
+            status: new forms_1.FormControl(1),
+            severity: new forms_1.FormControl(1),
             description: new forms_1.FormControl()
         });
     }
