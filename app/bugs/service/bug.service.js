@@ -19,7 +19,8 @@ let BugService = class BugService {
     getAddedBugs() {
         return Observable_1.Observable.create(obs => {
             this.bugsDbRef.on('child_added', bug => {
-                obs.next(bug.val());
+                const newBug = bug.val();
+                obs.next(newBug);
             }, err => {
                 obs.throw(err);
             });

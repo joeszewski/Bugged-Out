@@ -13,6 +13,7 @@ const bug_service_1 = require('../service/bug.service');
 let BugListComponent = class BugListComponent {
     constructor(bugService) {
         this.bugService = bugService;
+        this.bugs = [];
     }
     ngOnInit() {
         this.getAddedBugs();
@@ -20,7 +21,8 @@ let BugListComponent = class BugListComponent {
     getAddedBugs() {
         this.bugService.getAddedBugs()
             .subscribe(bug => {
-            console.log(bug);
+            this.bugs.push(bug);
+            console.log(this.bugs); // TODO: REMOVE
         }, err => {
             console.error("Unable to get added bug - ", err);
         });
