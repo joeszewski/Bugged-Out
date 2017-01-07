@@ -17,11 +17,14 @@ let FirebaseConfigService = class FirebaseConfigService {
         this.configureApp();
         this.configureDatabase();
     }
+    get database() {
+        return this._database;
+    }
     configureApp() {
         firebase.initializeApp(constants_1.FIREBASE_CONFIG);
     }
     configureDatabase() {
-        this.database = firebase.database();
+        this._database = firebase.database();
     }
 };
 FirebaseConfigService = __decorate([
