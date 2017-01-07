@@ -14,6 +14,7 @@ const shared_module_1 = require('../shared/shared.module');
 const bug_routing_module_1 = require('./bug-routing.module');
 //Component
 const bug_list_component_1 = require('./bug-list/bug-list.component');
+const bug_detail_component_1 = require('./bug-detail/bug-detail.component');
 // Service
 const bug_service_1 = require('./service/bug.service');
 let BugModule = class BugModule {
@@ -25,7 +26,8 @@ BugModule = __decorate([
             bug_routing_module_1.BugRoutingModule
         ],
         declarations: [
-            bug_list_component_1.BugListComponent
+            bug_list_component_1.BugListComponent,
+            bug_detail_component_1.BugDetailComponent
         ],
         exports: [],
         providers: [
