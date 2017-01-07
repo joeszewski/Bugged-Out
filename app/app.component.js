@@ -19,7 +19,12 @@ AppComponent = __decorate([
     <div class="container">
         <router-outlet></router-outlet>
     </div>
-    `
+    `,
+        styles: [`
+        .container {
+            margin-top: 5rem;
+        }
+    `]
     }), 
     __metadata('design:paramtypes', [])
 ], AppComponent);
