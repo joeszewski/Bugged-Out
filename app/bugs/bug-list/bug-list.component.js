@@ -9,7 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const bug_service_1 = require('../service/bug.service');
 let BugListComponent = class BugListComponent {
+    constructor(bugService) {
+        this.bugService = bugService;
+    }
+    ngOnInit() {
+        this.getAddedBugs();
+    }
+    getAddedBugs() {
+        this.bugService.getAddedBugs()
+            .subscribe(bug => {
+            console.log(bug);
+        }, err => {
+            console.error("Unable to get added bug - ", err);
+        });
+    }
 };
 BugListComponent = __decorate([
     core_1.Component({
@@ -18,7 +33,7 @@ BugListComponent = __decorate([
         templateUrl: 'bug-list.component.html',
         styleUrls: ['bug-list.component.css']
     }), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [bug_service_1.BugService])
 ], BugListComponent);
 exports.BugListComponent = BugListComponent;
 //# sourceMappingURL=bug-list.component.js.map

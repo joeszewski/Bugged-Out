@@ -8,31 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Modules
 const core_1 = require('@angular/core');
-const shared_module_1 = require('../shared/shared.module');
-const bug_routing_module_1 = require('./bug-routing.module');
-//Component
-const bug_list_component_1 = require('./bug-list/bug-list.component');
-// Service
-const bug_service_1 = require('./service/bug.service');
-let BugModule = class BugModule {
+const Observable_1 = require('rxjs/Observable');
+const firebase_config_service_1 = require('../../core/service/firebase-config.service');
+let BugService = class BugService {
+    constructor(fire) {
+        this.fire = fire;
+        this.bugsDbRef = this.fire.database.ref('/bugs');
+    }
+    getAddedBugs() {
+        return Observable_1.Observable.create(obs => {
+            this.bugsDbRef.on('child_added', bug => {
+                obs.next(bug.val());
+            }, err => {
+                obs.throw(err);
+            });
+        });
+    }
 };
-BugModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            shared_module_1.SharedModule,
-            bug_routing_module_1.BugRoutingModule
-        ],
-        declarations: [
-            bug_list_component_1.BugListComponent
-        ],
-        exports: [],
-        providers: [
-            bug_service_1.BugService
-        ]
-    }), 
-    __metadata('design:paramtypes', [])
-], BugModule);
-exports.BugModule = BugModule;
-//# sourceMappingURL=bug.module.js.map
+BugService = __decorate([
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [firebase_config_service_1.FirebaseConfigService])
+], BugService);
+exports.BugService = BugService;
+//# sourceMappingURL=bug.service.js.map
