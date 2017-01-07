@@ -25,6 +25,9 @@ let BugDetailComponent = class BugDetailComponent {
             description: new forms_1.FormControl()
         });
     }
+    submitForm() {
+        console.log(this.bugForm); // TODO: REMOVE
+    }
 };
 BugDetailComponent = __decorate([
     core_1.Component({

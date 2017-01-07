@@ -23,4 +23,8 @@ export class BugDetailComponent implements OnInit {
             description: new FormControl()
         });
     }
+
+    submitForm() {
+        console.log(this.bugForm) // TODO: REMOVE
+    }
 }
