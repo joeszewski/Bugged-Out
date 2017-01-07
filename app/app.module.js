@@ -13,6 +13,7 @@ const core_1 = require('@angular/core');
 const platform_browser_1 = require('@angular/platform-browser');
 const bug_module_1 = require('./bugs/bug.module');
 const app_routing_module_1 = require('./app-routing.module');
+const core_module_1 = require('./core/core.module');
 // Component
 const app_component_1 = require('./app.component');
 const navbar_component_1 = require('./navbar/navbar.component');
@@ -23,7 +24,8 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             bug_module_1.BugModule,
-            app_routing_module_1.AppRoutingModule
+            app_routing_module_1.AppRoutingModule,
+            core_module_1.CoreModule.forRoot()
         ],
         declarations: [
             app_component_1.AppComponent,
