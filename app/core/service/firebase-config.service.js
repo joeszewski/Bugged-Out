@@ -10,13 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const firebase = require('firebase');
+require('firebase/database');
 const constants_1 = require('../constant/constants');
 let FirebaseConfigService = class FirebaseConfigService {
     constructor() {
         this.configureApp();
+        this.configureDatabase();
     }
     configureApp() {
         firebase.initializeApp(constants_1.FIREBASE_CONFIG);
+    }
+    configureDatabase() {
+        this.database = firebase.database();
     }
 };
 FirebaseConfigService = __decorate([
