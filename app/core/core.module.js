@@ -12,6 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 const core_1 = require('@angular/core');
+// Service
+const firebase_config_service_1 = require('./service/firebase-config.service');
 let CoreModule_1 = class CoreModule {
     constructor(parentModule) {
         if (parentModule) {
@@ -21,7 +23,7 @@ let CoreModule_1 = class CoreModule {
     static forRoot() {
         return {
             ngModule: CoreModule_1,
-            providers: []
+            providers: [firebase_config_service_1.FirebaseConfigService]
         };
     }
 };
