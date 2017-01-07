@@ -9,9 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const forms_1 = require('@angular/forms');
 let BugDetailComponent = class BugDetailComponent {
     constructor() {
         this.modalId = "bugModal";
+    }
+    ngOnInit() {
+        this.configureForm();
+    }
+    configureForm() {
+        this.bugForm = new forms_1.FormGroup({
+            title: new forms_1.FormControl(),
+            status: new forms_1.FormControl(),
+            severity: new forms_1.FormControl(),
+            description: new forms_1.FormControl()
+        });
     }
 };
 BugDetailComponent = __decorate([
