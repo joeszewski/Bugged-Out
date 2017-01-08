@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const forms_1 = require('@angular/forms');
+const forbidden_string_validator_1 = require('../../shared/validation/forbidden-string.validator');
 let BugDetailComponent = class BugDetailComponent {
     constructor() {
         this.modalId = "bugModal";
@@ -19,7 +20,7 @@ let BugDetailComponent = class BugDetailComponent {
     }
     configureForm() {
         this.bugForm = new forms_1.FormGroup({
-            title: new forms_1.FormControl(null, forms_1.Validators.required),
+            title: new forms_1.FormControl(null, [forms_1.Validators.required, forbidden_string_validator_1.forbiddenStringValidator(/puppy/i)]),
             status: new forms_1.FormControl(1, forms_1.Validators.required),
             severity: new forms_1.FormControl(1, forms_1.Validators.required),
             description: new forms_1.FormControl(null, forms_1.Validators.required)
