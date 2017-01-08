@@ -16,7 +16,7 @@ import { forbiddenStringValidator } from '../../shared/validation/forbidden-stri
 export class BugDetailComponent implements OnInit {
     private modalId = "bugModal";
     private bugForm: FormGroup;
-    @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null);
+    @Input() currentBug = new Bug(null, null, 1, 1, null, null, null, null, null);
 
     constructor(private bugService: BugService) {}
 
@@ -24,12 +24,15 @@ export class BugDetailComponent implements OnInit {
         this.configureForm();
     }
 
-    configureForm() {
+    configureForm(bug?: Bug) {
+        if (bug) {
+            this.currentBug = bug;
+        }
         this.bugForm = new FormGroup({
-            title: new FormControl(null, [Validators.required, forbiddenStringValidator(/puppy/i)]),
-            status: new FormControl(1, Validators.required),
-            severity: new FormControl(1, Validators.required),
-            description: new FormControl(null, Validators.required)
+            title: new FormControl(this.currentBug.title, [Validators.required, forbiddenStringValidator(/puppy/i)]),
+            status: new FormControl(this.currentBug.status, Validators.required),
+            severity: new FormControl(this.currentBug.severity, Validators.required),
+            description: new FormControl(this.currentBug.description, Validators.required)
         });
     }
 
@@ -49,5 +52,10 @@ export class BugDetailComponent implements OnInit {
 
     freshForm() {
         this.bugForm.reset({ status: 1, severity: 1 });
+        this.cleanBug();
+    }
+
+    cleanBug() {
+        this. currentBug = new Bug(null, null, 1, 1, null, null, null, null, null);
     }
 }

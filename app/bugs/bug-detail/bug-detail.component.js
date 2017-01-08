@@ -17,17 +17,20 @@ let BugDetailComponent = class BugDetailComponent {
     constructor(bugService) {
         this.bugService = bugService;
         this.modalId = "bugModal";
-        this.currentBug = new bug_1.Bug(null, null, null, null, null, null, null, null, null);
+        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
     }
     ngOnInit() {
         this.configureForm();
     }
-    configureForm() {
+    configureForm(bug) {
+        if (bug) {
+            this.currentBug = bug;
+        }
         this.bugForm = new forms_1.FormGroup({
-            title: new forms_1.FormControl(null, [forms_1.Validators.required, forbidden_string_validator_1.forbiddenStringValidator(/puppy/i)]),
-            status: new forms_1.FormControl(1, forms_1.Validators.required),
-            severity: new forms_1.FormControl(1, forms_1.Validators.required),
-            description: new forms_1.FormControl(null, forms_1.Validators.required)
+            title: new forms_1.FormControl(this.currentBug.title, [forms_1.Validators.required, forbidden_string_validator_1.forbiddenStringValidator(/puppy/i)]),
+            status: new forms_1.FormControl(this.currentBug.status, forms_1.Validators.required),
+            severity: new forms_1.FormControl(this.currentBug.severity, forms_1.Validators.required),
+            description: new forms_1.FormControl(this.currentBug.description, forms_1.Validators.required)
         });
     }
     submitForm() {
@@ -44,6 +47,10 @@ let BugDetailComponent = class BugDetailComponent {
     }
     freshForm() {
         this.bugForm.reset({ status: 1, severity: 1 });
+        this.cleanBug();
+    }
+    cleanBug() {
+        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
     }
 };
 __decorate([
