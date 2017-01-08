@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { BugService } from '../service/bug.service';
+
+import { Bug } from '../model/bug';
 
 import { forbiddenStringValidator } from '../../shared/validation/forbidden-string.validator';
 
@@ -12,6 +16,9 @@ import { forbiddenStringValidator } from '../../shared/validation/forbidden-stri
 export class BugDetailComponent implements OnInit {
     private modalId = "bugModal";
     private bugForm: FormGroup;
+    @Input() currentBug = new Bug(null, null, null, null, null, null, null, null, null);
+
+    constructor(private bugService: BugService) {}
 
     ngOnInit() {
         this.configureForm();
@@ -28,5 +35,14 @@ export class BugDetailComponent implements OnInit {
 
     submitForm() {
         console.log(this.bugForm) // TODO: REMOVE
+        this.addBug()
+    }
+
+    addBug() {
+        this.currentBug.title = this.bugForm.value["title"];
+        this.currentBug.status = this.bugForm.value["status"];
+        this.currentBug.severity = this.bugForm.value["severity"];
+        this.currentBug.description = this.bugForm.value["description"];
+        this.bugService.addBug(this.currentBug);
     }
 }
