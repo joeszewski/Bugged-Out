@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
     selector: 'bug-detail',
     templateUrl: 'bug-detail.component.html',
-    styleUrls: [ 'bug-detail.component.css' ]
+    styleUrls: ['bug-detail.component.css']
 })
 export class BugDetailComponent implements OnInit {
     private modalId = "bugModal";
@@ -17,10 +17,10 @@ export class BugDetailComponent implements OnInit {
 
     configureForm() {
         this.bugForm = new FormGroup({
-            title: new FormControl(),
-            status: new FormControl(1),
-            severity: new FormControl(1),
-            description: new FormControl()
+            title: new FormControl(null, Validators.required),
+            status: new FormControl(1, Validators.required),
+            severity: new FormControl(1, Validators.required),
+            description: new FormControl(null, Validators.required)
         });
     }
 
