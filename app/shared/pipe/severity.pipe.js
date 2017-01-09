@@ -9,25 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const common_1 = require("@angular/common");
-const status_pipe_1 = require('./pipe/status.pipe');
-const severity_pipe_1 = require('./pipe/severity.pipe');
-let SharedModule = class SharedModule {
+const constants_1 = require('../constant/constants');
+let SeverityPipe = class SeverityPipe {
+    constructor() {
+        this.severities = constants_1.SEVERITY;
+    }
+    transform(severityNum) {
+        return this.severities[severityNum];
+    }
 };
-SharedModule = __decorate([
-    core_1.NgModule({
-        imports: [common_1.CommonModule],
-        declarations: [
-            status_pipe_1.StatusPipe,
-            severity_pipe_1.SeverityPipe
-        ],
-        exports: [
-            common_1.CommonModule,
-            status_pipe_1.StatusPipe,
-            severity_pipe_1.SeverityPipe
-        ]
+SeverityPipe = __decorate([
+    core_1.Pipe({
+        name: 'severity'
     }), 
     __metadata('design:paramtypes', [])
-], SharedModule);
-exports.SharedModule = SharedModule;
-//# sourceMappingURL=shared.module.js.map
+], SeverityPipe);
+exports.SeverityPipe = SeverityPipe;
+//# sourceMappingURL=severity.pipe.js.map
