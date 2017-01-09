@@ -27,6 +27,17 @@ let BugService = class BugService {
             });
         });
     }
+    changedListener() {
+        return Observable_1.Observable.create(obs => {
+            this.bugsDbRef.on('child_changed', bug => {
+                const updatedBug = bug.val();
+                updatedBug.id = bug.key;
+                obs.next(updatedBug);
+            }, err => {
+                obs.throw(err);
+            });
+        });
+    }
     addBug(bug) {
         const newBugRef = this.bugsDbRef.push();
         newBugRef.set({

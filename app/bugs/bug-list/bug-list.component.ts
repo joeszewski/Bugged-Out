@@ -4,11 +4,11 @@ import { BugService } from '../service/bug.service';
 
 import { Bug } from '../model/bug';
 
-@Component ({
+@Component({
     moduleId: module.id,
     selector: 'bug-list',
     templateUrl: 'bug-list.component.html',
-    styleUrls: [ 'bug-list.component.css' ]
+    styleUrls: ['bug-list.component.css']
 })
 export class BugListComponent implements OnInit {
 
@@ -18,16 +18,26 @@ export class BugListComponent implements OnInit {
 
     ngOnInit() {
         this.getAddedBugs();
+        this.getUpdatedBugs();
     }
 
     getAddedBugs() {
         this.bugService.getAddedBugs()
             .subscribe(bug => {
                 this.bugs.push(bug);
-                console.log(this.bugs); // TODO: REMOVE
             },
             err => {
                 console.error("Unable to get added bug - ", err);
+            });
+    }
+    getUpdatedBugs() {
+        this.bugService.changedListener()
+            .subscribe(updatedBug => {
+                const bugIndex = this.bugs.map(index => index.id).indexOf(updatedBug['id']); // Find which bug inthe array the user has selected
+                this.bugs[bugIndex] = updatedBug; // Replace the original bug data with the new bug data
+            },
+            err => {
+                console.error("Unable to get updated bug - ", err);
             });
     }
 }
