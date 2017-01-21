@@ -66,10 +66,6 @@ let BugDetailComponent = class BugDetailComponent {
         this.currentBug = new bug_1.Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     }
 };
-__decorate([
-    core_1.Input(), 
-    __metadata('design:type', Object)
-], BugDetailComponent.prototype, "currentBug", void 0);
 BugDetailComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
