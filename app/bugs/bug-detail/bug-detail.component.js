@@ -12,14 +12,21 @@ const core_1 = require('@angular/core');
 const forms_1 = require('@angular/forms');
 const bug_service_1 = require('../service/bug.service');
 const bug_1 = require('../model/bug');
+const constants_1 = require('../../shared/constant/constants');
 const forbidden_string_validator_1 = require('../../shared/validation/forbidden-string.validator');
 let BugDetailComponent = class BugDetailComponent {
     constructor(bugService) {
         this.bugService = bugService;
         this.modalId = "bugModal";
-        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
+        this.statuses = constants_1.STATUS;
+        this.severities = constants_1.SEVERITY;
+        this.statusArr = [];
+        this.severityArr = [];
+        this.currentBug = new bug_1.Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     }
     ngOnInit() {
+        this.statusArr = Object.keys(this.statuses).filter(Number);
+        this.severityArr = Object.keys(this.severities).filter(Number);
         this.configureForm();
     }
     configureForm(bug) {
@@ -53,11 +60,11 @@ let BugDetailComponent = class BugDetailComponent {
         this.bugService.updateBug(this.currentBug);
     }
     freshForm() {
-        this.bugForm.reset({ status: 1, severity: 1 });
+        this.bugForm.reset({ status: this.statuses.Logged, severity: this.severities.Severe });
         this.cleanBug();
     }
     cleanBug() {
-        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
+        this.currentBug = new bug_1.Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     }
 };
 __decorate([
