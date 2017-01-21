@@ -51,7 +51,6 @@ let BugDetailComponent = class BugDetailComponent {
         else {
             this.addBug();
         }
-        this.freshForm();
     }
     addBug() {
         this.bugService.addBug(this.currentBug);
